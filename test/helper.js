@@ -23,6 +23,7 @@ const build = async t => {
   })
   fastify.register(crud)
   t.tearDown(fastify.close.bind(fastify))
+
   await fastify.ready()
   await fastify.mongo.db.dropDatabase()
 
