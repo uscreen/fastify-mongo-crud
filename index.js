@@ -18,15 +18,17 @@ const fastifyMongoCrud = (fastify, opts, next) => {
         return collection
       },
 
+      get newId() {
+        return new ObjectId()
+      },
+
       async create(data) {
         const result = await collection.insertOne(data)
         return result.ops.shift()
       },
 
-      async read(id) {
-        const result = await collection.find({ _id: ObjectId(id) }).toArray()
-        if (result.length) return result.shift()
-        throw fastify.httpErrors.notFound()
+      read(id) {
+        return this.findOne({ _id: ObjectId(id) })
       },
 
       async update(id, data) {
@@ -53,7 +55,8 @@ const fastifyMongoCrud = (fastify, opts, next) => {
 
       async findOne(query) {
         const result = await collection.findOne(query)
-        return result
+        if (result) return result
+        throw fastify.httpErrors.notFound()
       }
     }
   }

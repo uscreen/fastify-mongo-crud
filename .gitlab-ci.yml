@@ -3,13 +3,19 @@ image: node:10
 cache:
   paths:
     - node_modules/
+    - .yarn
+
+variables:
+  mongoServer: "mongo:27017"
 
 stages:
   - test
 
 test:
   stage: test
+  services:
+    - mongo:latest
   script:
-    - yarn install
+    - yarn install --pure-lockfile --cache-folder .yarn
     - yarn test:ci
   coverage: '/^Statements\s*:\s*([^%]+)/'
