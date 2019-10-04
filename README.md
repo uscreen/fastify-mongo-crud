@@ -101,6 +101,10 @@ module.exports = async fastify => {
 
 ## Changelog
 
+### v0.1.0
+
+- tests
+
 ### v0.0.0
 
 - init
