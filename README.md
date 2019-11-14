@@ -58,7 +58,7 @@ module.exports = async fastify => {
   /**
    * create
    */
-  fastify.put('/accounts', async req => {
+  fastify.post('/accounts', async req => {
     return { account: await accounts.create(req.body) }
   })
 
