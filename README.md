@@ -35,11 +35,9 @@ module.exports = fp((fastify, opts, next) => {
   fastify.register(crud)
 
   /**
-   * 3) proceed after connection
+   * 3) proceed
    */
-  fastify.ready(() => {
-    next()
-  })
+  next()
 })
 
 ```
