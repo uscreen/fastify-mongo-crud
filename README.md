@@ -8,11 +8,9 @@
 $ yarn add @uscreen.de/fastify-mongo-crud
 ```
 
-## Add Dependencies
+Adding `@uscreen.de/fastify-mongo-crud` also adds `fastify-mongodb` as direct dependency.
 
-```sh
-$ yarn add fastify-mongodb
-```
+> __Note__: You still need to register `mongodb` prior to `crud` as seen in example below. This is due to encapsulation of fastify plugins assuming you will want to resuse same `fastify.mongo` accross your application.
 
 ## Example
 
@@ -103,7 +101,7 @@ module.exports = async fastify => {
 
 ## Roadmap
 
-> TBD
+- embed and configure fastify-mongodb and expose `fastify.mongo` from within this module. Avoid duplicate install of plugins, though.
 
 ## Changelog
 
