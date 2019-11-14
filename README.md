@@ -8,6 +8,12 @@
 $ yarn add @uscreen.de/fastify-mongo-crud
 ```
 
+## Add Dependencies
+
+```sh
+$ yarn add fastify-mongodb
+```
+
 ## Example
 
 Setup within a `plugins/mongo.js` file:
