@@ -10,6 +10,7 @@ variables:
 
 stages:
   - test
+  - audit
 
 test:
   stage: test
@@ -19,3 +20,10 @@ test:
     - yarn install --pure-lockfile --cache-folder .yarn
     - yarn test:ci
   coverage: '/^Statements\s*:\s*([^%]+)/'
+
+audit:
+  stage: audit
+  only:
+  - schedules
+  script:
+    - yarn audit
