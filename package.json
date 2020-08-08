@@ -1,6 +1,6 @@
 {
   "name": "@uscreen.de/fastify-mongo-crud",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Tiny mongodb decorator providing CRUD-style DB-methods",
   "main": "index.js",
   "repository": {
