@@ -110,9 +110,17 @@ module.exports = (fastify, opts, next) => {
 
 ## Changelog
 
+### v0.3.0
+
+- upgraded to fastify 3.x
+
+### v0.2.0
+
+- added implicit timestamps for record "created" & "modified"
+
 ### v0.1.0
 
-- tests
+- added tests
 
 ### v0.0.0
 
