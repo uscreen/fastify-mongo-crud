@@ -12,7 +12,7 @@ const database = process.env.TAP_CHILD_ID
 const mongoServer = process.env.mongoServer || '127.0.0.1:27017'
 const mongoUri = `mongodb://${mongoServer}/${database}`
 
-const build = async t => {
+const build = async (t) => {
   const fastify = Fastify()
 
   fastify.register(sensible)

@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "fastify": "^2.10.0",
-    "fastify-sensible": "^2.1.1",
-    "pino-pretty": "^3.3.0"
+    "fastify": "^3.2.0",
+    "fastify-sensible": "^3.0.1",
+    "pino-pretty": "^4.1.0"
   }
 }

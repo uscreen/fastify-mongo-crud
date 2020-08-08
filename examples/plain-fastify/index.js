@@ -18,7 +18,7 @@ app.register(require('./plugins/mongo'), opts)
 app.register(require('./services/accounts'))
 
 // on ready
-app.ready(err => {
+app.ready((err) => {
   if (err) throw err
   app.log.info('Application ready, routes are set:\n' + app.printRoutes())
 })

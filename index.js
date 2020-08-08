@@ -9,7 +9,7 @@ const fp = require('fastify-plugin')
  */
 
 const fastifyMongoCrud = (fastify, opts, next) => {
-  const crud = collectionName => {
+  const crud = (collectionName) => {
     const collection = fastify.mongo.db.collection(collectionName)
     const ObjectId = fastify.mongo.ObjectId
 
