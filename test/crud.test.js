@@ -48,11 +48,11 @@ tap.test('fastify-mongo-crud', async (t) => {
         await accounts.read(accounts.newId)
       } catch (error) {
         thrown = true
-        t.is(error.name, 'NotFoundError')
-        t.is(error.message, 'Not Found')
-        t.is(error.statusCode, Number(404))
+        t.equal(error.name, 'NotFoundError')
+        t.equal(error.message, 'Not Found')
+        t.equal(error.statusCode, Number(404))
       }
-      t.is(true, thrown)
+      t.equal(true, thrown)
       t.end()
     })
     t.end()
@@ -99,11 +99,11 @@ tap.test('fastify-mongo-crud', async (t) => {
         await accounts.delete(_id)
       } catch (error) {
         thrown = true
-        t.is(error.name, 'NotFoundError')
-        t.is(error.message, 'Not Found')
-        t.is(error.statusCode, Number(404))
+        t.equal(error.name, 'NotFoundError')
+        t.equal(error.message, 'Not Found')
+        t.equal(error.statusCode, Number(404))
       }
-      t.is(true, thrown)
+      t.equal(true, thrown)
       t.end()
     })
     t.end()
@@ -144,11 +144,11 @@ tap.test('fastify-mongo-crud', async (t) => {
         await accounts.findOne({ a: 100 })
       } catch (error) {
         thrown = true
-        t.is(error.name, 'NotFoundError')
-        t.is(error.message, 'Not Found')
-        t.is(error.statusCode, Number(404))
+        t.equal(error.name, 'NotFoundError')
+        t.equal(error.message, 'Not Found')
+        t.equal(error.statusCode, Number(404))
       }
-      t.is(true, thrown)
+      t.equal(true, thrown)
       t.end()
     })
     t.end()

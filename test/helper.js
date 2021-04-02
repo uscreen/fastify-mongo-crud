@@ -22,7 +22,7 @@ const build = async (t) => {
     url: mongoUri
   })
   fastify.register(crud)
-  t.tearDown(fastify.close.bind(fastify))
+  t.teardown(fastify.close.bind(fastify))
 
   await fastify.ready()
   await fastify.mongo.db.dropDatabase()
