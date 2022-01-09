@@ -1417,10 +1417,10 @@ fastify-error@^0.3.0:
   resolved "https://registry.yarnpkg.com/fastify-error/-/fastify-error-0.3.1.tgz#8eb993e15e3cf57f0357fc452af9290f1c1278d2"
   integrity sha512-oCfpcsDndgnDVgiI7bwFKAun2dO+4h84vBlkWsWnz/OUK9Reff5UFoFl241xTiLeHWX/vU9zkDVXqYUxjOwHcQ==
 
-fastify-mongodb@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/fastify-mongodb/-/fastify-mongodb-2.0.1.tgz#05cfff6027df9facff7dd315f8bf198b6067f245"
-  integrity sha512-3bL5M9p2CUyK7pkPuLUBcSE2WjbOn4jgvp4aRgpw3NYyy+DnKo0LsgApPiq0HNxIv11K0e0pX+xv4MzDCX/NUw==
+fastify-mongodb@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/fastify-mongodb/-/fastify-mongodb-3.0.0.tgz#efda81dbed8fcd53d2a9937ee5157b3cb48f4de6"
+  integrity sha512-kxsGd2/izhUujxhpcdh6JUxp8/IKRgjFrt/d7W9YmLqs43YPK8uucxXT38mF2divdKdPGzGzRs0dYh6owczFGQ==
   dependencies:
     fastify-plugin "^2.0.0"
     mongodb "^3.3.0"
