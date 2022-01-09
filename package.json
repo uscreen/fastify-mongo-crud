@@ -13,13 +13,13 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@uscreen.de/eslint-config-prettystandard-node": "^0.1.3",
-    "fastify": "^3.17.0",
-    "fastify-sensible": "^3.1.1",
-    "lint-staged": "^11.0.0",
-    "prettier": "^2.2.1",
-    "tap": "^15.0.9",
-    "yorkie": "^2.0.0"
+    "@uscreen.de/dev-service": "^0.11.2",
+    "@uscreen.de/eslint-config-prettystandard-node": "^0.2.0",
+    "fastify": "^3.25.3",
+    "fastify-sensible": "^3.1.2",
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "tap": "^15.1.6"
   },
   "dependencies": {
     "fastify-mongodb": "^2.0.0",
@@ -29,15 +29,13 @@
     "lint": "eslint '**/*.js' --fix",
     "test": "tap test/**/*.test.js",
     "test:cov": "tap --coverage-report=html test/**/*.test.js",
-    "test:ci": "tap --coverage-report=text-summary test/**/*.test.js"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+    "test:ci": "tap --coverage-report=text-summary test/**/*.test.js",
+    "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{js}": [
-      "eslint --fix"
-    ]
+    "*.js": "eslint --cache --fix"
   },
-  "peerDependencies": {}
+  "services": [
+    "mongo"
+  ]
 }
