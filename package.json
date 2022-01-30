@@ -1,6 +1,6 @@
 {
   "name": "@uscreen.de/fastify-mongo-crud",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Tiny mongodb decorator providing CRUD-style DB-methods",
   "main": "index.js",
   "repository": {
@@ -13,17 +13,17 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@uscreen.de/dev-service": "^0.11.3",
+    "@uscreen.de/dev-service": "^0.11.4",
     "@uscreen.de/eslint-config-prettystandard-node": "^0.2.1",
-    "fastify": "^3.25.3",
+    "fastify": "^3.27.0",
     "fastify-sensible": "^3.1.2",
     "husky": ">=6",
-    "lint-staged": ">=10",
+    "lint-staged": ">=12.3.2",
     "tap": "^15.1.6"
   },
   "dependencies": {
     "fastify-mongodb": "^3.0.0",
-    "fastify-plugin": "^3.0.0"
+    "fastify-plugin": "^3.0.1"
   },
   "scripts": {
     "lint": "eslint '**/*.js' --fix",
