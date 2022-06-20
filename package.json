@@ -13,13 +13,13 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@uscreen.de/dev-service": "^0.11.13",
-    "@uscreen.de/eslint-config-prettystandard-node": "^0.2.1",
+    "@uscreen.de/dev-service": "^0.11.14",
+    "@uscreen.de/eslint-config-prettystandard-node": "^0.2.4",
     "fastify": "^3.29.0",
     "fastify-sensible": "^3.2.0",
     "husky": ">=8.0.1",
-    "lint-staged": ">=13.0.1",
-    "tap": "^16.2.0"
+    "lint-staged": ">=13.0.2",
+    "tap": "^16.3.0"
   },
   "dependencies": {
     "fastify-mongodb": "^3.0.0",
