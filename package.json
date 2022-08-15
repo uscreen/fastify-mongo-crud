@@ -13,8 +13,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@uscreen.de/dev-service": "^0.11.18",
-    "@uscreen.de/eslint-config-prettystandard-node": "^0.2.7",
+    "@uscreen.de/dev-service": "^0.11.19",
+    "@uscreen.de/eslint-config-prettystandard-node": "^0.2.8",
     "fastify": "^3.29.0",
     "fastify-sensible": "^3.2.0",
     "husky": ">=8.0.1",
