@@ -18,7 +18,7 @@ Setup within a `plugins/mongo.js` file:
 
 ```js
 import fp from 'fastify-plugin'
-import mongodb from 'fastify-mongodb'
+import mongodb from '@fastify/mongodb'
 import crud from '@uscreen.de/fastify-mongo-crud'
 
 export default fp((fastify, opts, next) => {
@@ -107,11 +107,12 @@ export default (fastify, opts, next) => {
 
 ## Changelog
 
-### 1.0.0
+### v1.0.0
 
 #### Changed
 
 - switch to __ESM only__
+- upgrade to fastify@4.x
 
 ### v0.3.0
 
