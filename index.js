@@ -71,5 +71,5 @@ export default fp(fastifyMongoCrud, {
   decorators: {
     fastify: ['httpErrors', 'mongo']
   },
-  dependencies: ['fastify-sensible', 'fastify-mongodb']
+  dependencies: ['@fastify/sensible', '@fastify/mongodb']
 })

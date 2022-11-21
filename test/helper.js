@@ -1,6 +1,6 @@
 import Fastify from 'fastify'
-import mongodb from 'fastify-mongodb'
-import sensible from 'fastify-sensible'
+import mongodb from '@fastify/mongodb'
+import sensible from '@fastify/sensible'
 import crud from '../index.js'
 
 const database = process.env.TAP_CHILD_ID
