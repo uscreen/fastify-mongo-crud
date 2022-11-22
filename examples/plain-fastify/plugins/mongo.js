@@ -1,5 +1,3 @@
-'use strict'
-
 const fp = require('fastify-plugin')
 const mongodb = require('fastify-mongodb')
 const crud = require('../../../index') // @uscreen.de/fastify-mongo-crud

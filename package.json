@@ -3,6 +3,7 @@
   "version": "1.0.0-0",
   "description": "Tiny mongodb decorator providing CRUD-style DB-methods",
   "main": "index.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git@gitlab.uscreen.net:uscreen/npm/fastify-mongo-crud.git"
@@ -15,6 +16,7 @@
   "devDependencies": {
     "@uscreen.de/dev-service": "^0.11.21",
     "@uscreen.de/eslint-config-prettystandard-node": "^0.2.10",
+    "c8": "^7.12.0",
     "fastify": "^3.29.0",
     "fastify-sensible": "^3.2.0",
     "husky": ">=8.0.2",
@@ -27,9 +29,9 @@
   },
   "scripts": {
     "lint": "eslint '**/*.js' --fix",
-    "test": "tap test/**/*.test.js",
-    "test:cov": "tap --coverage-report=html test/**/*.test.js",
-    "test:ci": "tap --coverage-report=text-summary test/**/*.test.js",
+    "test": "c8 tap",
+    "test:cov": "c8 --reporter=html --reporter=text tap",
+    "test:ci": "c8 --reporter=text-summary tap",
     "prepare": "husky install"
   },
   "lint-staged": {

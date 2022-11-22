@@ -1,5 +1,5 @@
-const tap = require('tap')
-const { build } = require('./helper')
+import tap from 'tap'
+import { build } from './helper.js'
 
 tap.test('fastify-mongo-crud', async (t) => {
   const fastify = await build(t)

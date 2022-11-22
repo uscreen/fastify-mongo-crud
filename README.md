@@ -17,13 +17,11 @@ Adding `@uscreen.de/fastify-mongo-crud` also adds `fastify-mongodb` as direct de
 Setup within a `plugins/mongo.js` file:
 
 ```js
-'use strict'
+import fp from 'fastify-plugin'
+import mongodb from 'fastify-mongodb'
+import crud from '@uscreen.de/fastify-mongo-crud'
 
-const fp = require('fastify-plugin')
-const mongodb = require('fastify-mongodb')
-const crud = require('@uscreen.de/fastify-mongo-crud')
-
-module.exports = fp((fastify, opts, next) => {
+export default fp((fastify, opts, next) => {
   /**
    * 1) setup mongodb connection
    */
@@ -45,11 +43,10 @@ module.exports = fp((fastify, opts, next) => {
 Usage within a `services/accounts.js` file:
 
 ```js
-'use strict'
 /**
  * let's write a classic CRUD service
  */
-module.exports = (fastify, opts, next) => {
+export default (fastify, opts, next) => {
   const accounts = fastify.crud('accounts')
 
   /**
@@ -109,6 +106,12 @@ module.exports = (fastify, opts, next) => {
 - embed and configure fastify-mongodb and expose `fastify.mongo` from within this module, if not installed in parent
 
 ## Changelog
+
+### 1.0.0
+
+#### Changed
+
+- switch to __ESM only__
 
 ### v0.3.0
 

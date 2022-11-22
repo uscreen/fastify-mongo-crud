@@ -1,3 +1,7 @@
 {
-  "reporter": "spec"
+  "timeout": 10,
+  "reporter": "spec",
+  "check-coverage": false,
+  "no-coverage": true,
+  "test-regex": "\\w+\\.test\\.js$"
 }

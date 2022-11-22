@@ -1,6 +1,4 @@
-'use strict'
-
-const fp = require('fastify-plugin')
+import fp from 'fastify-plugin'
 
 /**
  * @todo:
@@ -67,7 +65,7 @@ const fastifyMongoCrud = (fastify, opts, next) => {
   next()
 }
 
-module.exports = fp(fastifyMongoCrud, {
+export default fp(fastifyMongoCrud, {
   fastify: '>=2.x',
   name: 'fastify-mongo-crud',
   decorators: {
