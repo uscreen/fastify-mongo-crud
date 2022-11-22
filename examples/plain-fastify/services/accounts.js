@@ -1,7 +1,7 @@
 /**
  * let's write a classic CRUD service
  */
-module.exports = (fastify, opts, next) => {
+export default (fastify, opts, next) => {
   const accounts = fastify.crud('accounts')
 
   /**

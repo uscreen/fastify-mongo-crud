@@ -1,4 +1,7 @@
-const fastify = require('fastify')
+import fastify from 'fastify'
+import sensible from '@fastify/sensible'
+import mongo from './plugins/mongo.js'
+import accounts from './services/accounts.js'
 
 // config
 const opts = {
@@ -6,14 +9,14 @@ const opts = {
 }
 
 // init
-const app = fastify({ logger: { level: 'debug', prettyPrint: true } })
+const app = fastify({ logger: { level: 'debug' } })
 
 // register modules and plugins 1st
-app.register(require('fastify-sensible'))
-app.register(require('./plugins/mongo'), opts)
+app.register(sensible)
+app.register(mongo, opts)
 
 // register services
-app.register(require('./services/accounts'))
+app.register(accounts)
 
 // on ready
 app.ready((err) => {
