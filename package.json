@@ -4,9 +4,10 @@
   "description": "Tiny mongodb decorator providing CRUD-style DB-methods",
   "main": "index.js",
   "type": "module",
+  "homepage": "https://github.com/uscreen/fastify-mongo-crud",
   "repository": {
     "type": "git",
-    "url": "git@gitlab.uscreen.net:uscreen/npm/fastify-mongo-crud.git"
+    "url": "git+https://github.com/uscreen/fastify-mongo-crud.git"
   },
   "author": {
     "name": "Marcus Spiegel",
