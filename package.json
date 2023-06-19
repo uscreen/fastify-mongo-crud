@@ -18,7 +18,7 @@
     "@fastify/sensible": "^5.2.0",
     "@uscreen.de/dev-service": "^0.12.3",
     "@uscreen.de/eslint-config-prettystandard-node": "^0.2.11",
-    "c8": "^7.13.0",
+    "c8": "^8.0.0",
     "fastify": "^4.13.0",
     "husky": ">=8.0.3",
     "lint-staged": ">=13.1.2",
