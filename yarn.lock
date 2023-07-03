@@ -1231,11 +1231,10 @@
   integrity sha512-S9q47ByT2pPvD65IvrWp7qppVMpk9WGMbVq9wbWZOHg6tnXSD4vyhao6nOSBwwfDdV2p3Kx9evA9vI+XWTfDvw==
 
 "@uscreen.de/dev-service@^0.12.3":
-  version "0.12.9"
-  resolved "https://registry.yarnpkg.com/@uscreen.de/dev-service/-/dev-service-0.12.9.tgz#444633ec8ba3c4a3447b82d67591d81bdd4e22e4"
-  integrity sha512-xJ0mjTjjv8kyNLa8FBa+Xb0bpzHJziifNGt9MP8R15e0sjBliQuTLu+5zDIPSFOU6fmVu5oIbn7pT3sX8UR64g==
+  version "0.12.10"
+  resolved "https://registry.yarnpkg.com/@uscreen.de/dev-service/-/dev-service-0.12.10.tgz#ecd19e537c25b6963ef72c19fe0ffccf08eda23d"
+  integrity sha512-JUFswVnb3eBISHutDZmrVT2R6aJqT7OefigL2VJXq95+ad50kUVKmlzepWbTd+AJk21DtJPGZFyWINoIeB068A==
   dependencies:
-    c8 "^8.0.0"
     commander "^11.0.0"
     fs-extra "^11.1.0"
     nanoid "^4.0.0"
