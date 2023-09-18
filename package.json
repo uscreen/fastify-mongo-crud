@@ -25,7 +25,7 @@
     "tap": "^16.3.4"
   },
   "dependencies": {
-    "@fastify/mongodb": "^6.2.0",
+    "@fastify/mongodb": "^8.0.0",
     "fastify-plugin": "^4.5.0"
   },
   "scripts": {
