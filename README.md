@@ -1,7 +1,7 @@
 # fastify-mongo-crud
 
 [![Test CI](https://github.com/uscreen/fastify-mongo-crud/actions/workflows/main.yml/badge.svg)](https://github.com/uscreen/fastify-mongo-crud/actions/workflows/node.js.yml)
-[![Test Coverage](https://coveralls.io/repos/github/uscreen/fastify-mongo-crud/badge.svg?branch=master)](https://coveralls.io/github/uscreen/fastify-mongo-crud?branch=master)
+[![Test Coverage](https://coveralls.io/repos/github/uscreen/fastify-mongo-crud/badge.svg?branch=legacy)](https://coveralls.io/github/uscreen/fastify-mongo-crud?branch=legacy)
 [![Known Vulnerabilities](https://snyk.io/test/github/uscreen/fastify-mongo-crud/badge.svg?targetFile=package.json)](https://snyk.io/test/github/uscreen/fastify-mongo-crud?targetFile=package.json)
 [![NPM Version](https://badge.fury.io/js/@uscreen.de%2Ffastify-mongo-crud.svg)](https://badge.fury.io/js/@uscreen.de%2Ffastify-mongo-crud)
 
