@@ -1,5 +1,5 @@
-const tap = require('tap')
-const { build } = require('./helper')
+import tap from 'tap'
+import { build } from './helper.js'
 
 tap.test('fastify-mongo-crud', async (t) => {
   const fastify = await build(t)
@@ -16,7 +16,8 @@ tap.test('fastify-mongo-crud', async (t) => {
       t.ok(accounts.collection)
       accounts.collection.insertOne({ a: 1 }, (err, r) => {
         t.error(err)
-        t.equal(1, r.insertedCount)
+        t.ok(r.acknowledged)
+        t.ok(r.insertedId)
         t.end()
       })
     })

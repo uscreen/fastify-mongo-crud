@@ -1,6 +1,4 @@
-'use strict'
-
-const fp = require('fastify-plugin')
+import fp from 'fastify-plugin'
 
 /**
  * @todo:
@@ -23,10 +21,8 @@ const fastifyMongoCrud = (fastify, opts, next) => {
       },
 
       async create(data) {
-        const result = await collection.insertOne(
-          Object.assign(data, { created: new Date() })
-        )
-        return result.ops.shift()
+        await collection.insertOne(Object.assign(data, { created: new Date() }))
+        return data
       },
 
       read(id) {
@@ -37,7 +33,7 @@ const fastifyMongoCrud = (fastify, opts, next) => {
         const result = await collection.findOneAndUpdate(
           { _id: ObjectId(id) },
           { $set: data, $currentDate: { modified: true } },
-          { returnOriginal: false, upsert: true }
+          { returnDocument: 'after', upsert: true }
         )
         return result.value
       },
@@ -67,11 +63,11 @@ const fastifyMongoCrud = (fastify, opts, next) => {
   next()
 }
 
-module.exports = fp(fastifyMongoCrud, {
+export default fp(fastifyMongoCrud, {
   fastify: '>=2.x',
   name: 'fastify-mongo-crud',
   decorators: {
     fastify: ['httpErrors', 'mongo']
   },
-  dependencies: ['fastify-sensible', 'fastify-mongodb']
+  dependencies: ['@fastify/sensible', '@fastify/mongodb']
 })

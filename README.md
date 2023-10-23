@@ -1,7 +1,7 @@
 # fastify-mongo-crud
 
 [![Test CI](https://github.com/uscreen/fastify-mongo-crud/actions/workflows/main.yml/badge.svg)](https://github.com/uscreen/fastify-mongo-crud/actions/workflows/node.js.yml)
-[![Test Coverage](https://coveralls.io/repos/github/uscreen/fastify-mongo-crud/badge.svg?branch=master)](https://coveralls.io/github/uscreen/fastify-mongo-crud?branch=master)
+[![Test Coverage](https://coveralls.io/repos/github/uscreen/fastify-mongo-crud/badge.svg?branch=next)](https://coveralls.io/github/uscreen/fastify-mongo-crud?branch=next)
 [![Known Vulnerabilities](https://snyk.io/test/github/uscreen/fastify-mongo-crud/badge.svg?targetFile=package.json)](https://snyk.io/test/github/uscreen/fastify-mongo-crud?targetFile=package.json)
 [![NPM Version](https://badge.fury.io/js/@uscreen.de%2Ffastify-mongo-crud.svg)](https://badge.fury.io/js/@uscreen.de%2Ffastify-mongo-crud)
 
@@ -22,13 +22,11 @@ Adding `@uscreen.de/fastify-mongo-crud` also adds `fastify-mongodb` as direct de
 Setup within a `plugins/mongo.js` file:
 
 ```js
-'use strict'
+import fp from 'fastify-plugin'
+import mongodb from '@fastify/mongodb'
+import crud from '@uscreen.de/fastify-mongo-crud'
 
-const fp = require('fastify-plugin')
-const mongodb = require('fastify-mongodb')
-const crud = require('@uscreen.de/fastify-mongo-crud')
-
-module.exports = fp((fastify, opts, next) => {
+export default fp((fastify, opts, next) => {
   /**
    * 1) setup mongodb connection
    */
@@ -50,11 +48,10 @@ module.exports = fp((fastify, opts, next) => {
 Usage within a `services/accounts.js` file:
 
 ```js
-'use strict'
 /**
  * let's write a classic CRUD service
  */
-module.exports = (fastify, opts, next) => {
+export default (fastify, opts, next) => {
   const accounts = fastify.crud('accounts')
 
   /**
@@ -114,6 +111,13 @@ module.exports = (fastify, opts, next) => {
 - embed and configure fastify-mongodb and expose `fastify.mongo` from within this module, if not installed in parent
 
 ## Changelog
+
+### v1.0.0
+
+#### Changed
+
+- switch to __ESM only__
+- upgrade to fastify@4.x
 
 ### v0.3.0
 

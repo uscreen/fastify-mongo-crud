@@ -1,9 +1,7 @@
-'use strict'
-
-const Fastify = require('fastify')
-const mongodb = require('fastify-mongodb')
-const sensible = require('fastify-sensible')
-const crud = require('../index')
+import Fastify from 'fastify'
+import mongodb from '@fastify/mongodb'
+import sensible from '@fastify/sensible'
+import crud from '../index.js'
 
 const database = process.env.TAP_CHILD_ID
   ? `npm-crud-test-${process.env.TAP_CHILD_ID}`
@@ -12,7 +10,7 @@ const database = process.env.TAP_CHILD_ID
 const mongoServer = process.env.mongoServer || '127.0.0.1:27017'
 const mongoUri = `mongodb://${mongoServer}/${database}`
 
-const build = async (t) => {
+export const build = async (t) => {
   const fastify = Fastify()
 
   fastify.register(sensible)
@@ -28,8 +26,4 @@ const build = async (t) => {
   await fastify.mongo.db.dropDatabase()
 
   return fastify
-}
-
-module.exports = {
-  build
 }

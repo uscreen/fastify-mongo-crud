@@ -1,10 +1,8 @@
-'use strict'
+import fp from 'fastify-plugin'
+import mongodb from '@fastify/mongodb'
+import crud from '../../../index.js' // @uscreen.de/fastify-mongo-crud
 
-const fp = require('fastify-plugin')
-const mongodb = require('fastify-mongodb')
-const crud = require('../../../index') // @uscreen.de/fastify-mongo-crud
-
-module.exports = fp((fastify, opts, next) => {
+export default fp((fastify, opts, next) => {
   /**
    * 1) setup mongodb connection
    */
