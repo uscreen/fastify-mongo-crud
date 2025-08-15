@@ -26,23 +26,23 @@ const fastifyMongoCrud = (fastify, opts, next) => {
       },
 
       read(id) {
-        return this.findOne({ _id: ObjectId(id) })
+        return this.findOne({ _id: new ObjectId(id) })
       },
 
       async update(id, data) {
         const result = await collection.findOneAndUpdate(
-          { _id: ObjectId(id) },
+          { _id: new ObjectId(id) },
           { $set: data, $currentDate: { modified: true } },
           { returnDocument: 'after', upsert: true }
         )
-        return result.value
+        return result
       },
 
       async delete(id) {
         const result = await collection.findOneAndDelete({
-          _id: ObjectId(id)
+          _id: new ObjectId(id)
         })
-        if (result.value) return result.value
+        if (result) return result
         throw fastify.httpErrors.notFound()
       },
 
