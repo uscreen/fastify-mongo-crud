@@ -10,7 +10,7 @@
 ## Install
 
 ```sh
-$ yarn add @uscreen.de/fastify-mongo-crud
+$ pnpm add @uscreen.de/fastify-mongo-crud
 ```
 
 Adding `@uscreen.de/fastify-mongo-crud` also adds `fastify-mongodb` as direct dependency.

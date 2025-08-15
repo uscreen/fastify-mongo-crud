@@ -1,7 +1,7 @@
 test:
-	yarn test
+	pnpm test
 
 test.coverage:
-	yarn test:cov
+	pnpm test:cov
 
 .PHONY: test

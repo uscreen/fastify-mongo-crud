@@ -5,4 +5,4 @@ node_modules
 .DS_Store
 /.eslintcache
 /.dccache
-examples/plain-fastify/yarn.lock
+examples/plain-fastify/pnpm-lock.yaml
