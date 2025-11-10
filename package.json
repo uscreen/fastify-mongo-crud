@@ -15,7 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "@uscreen.de/dev-service": "^0.13.0",
-    "@uscreen.de/eslint-config-prettystandard-node": "^0.2.11",
+    "@uscreen.de/eslint-config-prettystandard-node": "^0.3.0",
     "fastify": "^3.29.5",
     "fastify-sensible": "^3.2.0",
     "husky": ">=8.0.2",
