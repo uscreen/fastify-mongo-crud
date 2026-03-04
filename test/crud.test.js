@@ -1,5 +1,5 @@
-import { test } from 'node:test'
 import assert from 'node:assert/strict'
+import { test } from 'node:test'
 
 import { build } from './helper.js'
 
@@ -41,7 +41,8 @@ test('fastify-mongo-crud', async (t) => {
       let thrown = false
       try {
         await accounts.read(accounts.newId)
-      } catch (error) {
+      }
+      catch (error) {
         thrown = true
         assert.equal(error.name, 'NotFoundError')
         assert.equal(error.message, 'Not Found')
@@ -71,7 +72,7 @@ test('fastify-mongo-crud', async (t) => {
 
     await t.test(
       'should upsert a record with unknown _id and return new value',
-      async (t) => {
+      async () => {
         const newId = accounts.newId
         const read = await accounts.update(newId, { d: 1 })
         assert.equal(newId.toString(), read._id.toString())
@@ -94,7 +95,8 @@ test('fastify-mongo-crud', async (t) => {
       let thrown = false
       try {
         await accounts.delete(_id)
-      } catch (error) {
+      }
+      catch (error) {
         thrown = true
         assert.equal(error.name, 'NotFoundError')
         assert.equal(error.message, 'Not Found')
@@ -132,7 +134,8 @@ test('fastify-mongo-crud', async (t) => {
       let thrown = false
       try {
         await accounts.findOne({ a: 100 })
-      } catch (error) {
+      }
+      catch (error) {
         thrown = true
         assert.equal(error.name, 'NotFoundError')
         assert.equal(error.message, 'Not Found')

@@ -1,12 +1,12 @@
 {
   "name": "plain-fastify",
-  "version": "0.0.0",
-  "main": "index.js",
   "type": "module",
+  "version": "0.0.0",
   "license": "MIT",
+  "main": "index.js",
   "dependencies": {
-    "fastify": "^5.5.0",
     "@fastify/sensible": "^6.0.3",
+    "fastify": "^5.5.0",
     "pino-pretty": "^13.1.1"
   }
 }

@@ -1,13 +1,14 @@
-import Fastify from 'fastify'
+import process from 'node:process'
 import mongodb from '@fastify/mongodb'
 import sensible from '@fastify/sensible'
+import Fastify from 'fastify'
 import { ulid } from 'ulid'
 import crud from '../index.js'
 
 const uuid = (prefix = '') => {
-  return [prefix, ulid().toLowerCase()].filter((e) => e).join('-')
+  return [prefix, ulid().toLowerCase()].filter(e => e).join('-')
 }
-const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+const wait = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 const database = uuid('npm-crud-test')
 const mongoServer = process.env.mongoServer || '127.0.0.1:27017'

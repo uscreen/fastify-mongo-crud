@@ -1,5 +1,5 @@
-import fp from 'fastify-plugin'
 import mongodb from '@fastify/mongodb'
+import fp from 'fastify-plugin'
 import crud from '../../../index.js' // @uscreen.de/fastify-mongo-crud
 
 export default fp((fastify, opts, next) => {

@@ -1,20 +1,34 @@
 {
   "name": "@uscreen.de/fastify-mongo-crud",
-  "version": "2.0.0",
-  "description": "Tiny mongodb decorator providing CRUD-style DB-methods",
-  "main": "index.js",
   "type": "module",
-  "homepage": "https://github.com/uscreen/fastify-mongo-crud",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/uscreen/fastify-mongo-crud.git"
-  },
+  "version": "2.0.0",
+  "packageManager": "pnpm@10.28.2+sha512.41872f037ad22f7348e3b1debbaf7e867cfd448f2726d9cf74c08f19507c31d2c8e7a11525b983febc2df640b5438dee6023ebb1f84ed43cc2d654d2bc326264",
+  "description": "Tiny mongodb decorator providing CRUD-style DB-methods",
   "author": {
     "name": "Marcus Spiegel",
     "email": "spiegel@uscreen.de"
   },
   "license": "MIT",
+  "homepage": "https://github.com/uscreen/fastify-mongo-crud",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uscreen/fastify-mongo-crud.git"
+  },
+  "main": "index.js",
   "files": [],
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "test": "node --test --test-reporter spec",
+    "test:cov": "c8 --reporter=html --reporter=text node --test",
+    "test:ci": "c8 --reporter=lcov --reporter=text node --test",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@fastify/mongodb": "^9.0.2",
+    "fastify-plugin": "^5.1.0"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^7.6.1",
     "@fastify/sensible": "^6.0.3",
@@ -27,24 +41,10 @@
     "lint-staged": "^16.2.6",
     "ulid": "^3.0.1"
   },
-  "dependencies": {
-    "@fastify/mongodb": "^9.0.2",
-    "fastify-plugin": "^5.1.0"
-  },
-  "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "test": "node --test --test-reporter spec",
-    "test:cov": "c8 --reporter=html --reporter=text node --test",
-    "test:ci": "c8 --reporter=lcov --reporter=text node --test",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prepare": "husky"
-  },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
   },
   "services": [
     "mongo"
-  ],
-  "packageManager": "pnpm@10.28.2+sha512.41872f037ad22f7348e3b1debbaf7e867cfd448f2726d9cf74c08f19507c31d2c8e7a11525b983febc2df640b5438dee6023ebb1f84ed43cc2d654d2bc326264"
+  ]
 }

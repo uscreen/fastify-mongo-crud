@@ -1,5 +1,5 @@
-import fastify from 'fastify'
 import sensible from '@fastify/sensible'
+import fastify from 'fastify'
 import mongo from './plugins/mongo.js'
 import accounts from './services/accounts.js'
 
@@ -20,8 +20,10 @@ app.register(accounts)
 
 // on ready
 app.ready((err) => {
-  if (err) throw err
-  app.log.info('Application ready, routes are set:\n' + app.printRoutes())
+  if (err) {
+    throw err
+  }
+  app.log.info(`Application ready, routes are set:\n${app.printRoutes()}`)
 })
 
 app.listen(9000)

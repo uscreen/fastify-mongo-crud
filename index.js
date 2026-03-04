@@ -42,7 +42,9 @@ const fastifyMongoCrud = (fastify, opts, next) => {
         const result = await collection.findOneAndDelete({
           _id: new ObjectId(id)
         })
-        if (result) return result
+        if (result) {
+          return result
+        }
         throw fastify.httpErrors.notFound()
       },
 
@@ -53,7 +55,9 @@ const fastifyMongoCrud = (fastify, opts, next) => {
 
       async findOne(query) {
         const result = await collection.findOne(query)
-        if (result) return result
+        if (result) {
+          return result
+        }
         throw fastify.httpErrors.notFound()
       }
     }

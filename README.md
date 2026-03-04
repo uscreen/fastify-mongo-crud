@@ -15,7 +15,7 @@ $ pnpm add @uscreen.de/fastify-mongo-crud
 
 Adding `@uscreen.de/fastify-mongo-crud` also adds `fastify-mongodb` as direct dependency.
 
-> __Note__: You still need to register `mongodb` prior to `crud` as seen in example below. This is due to encapsulation of fastify plugins assuming you will want to resuse same `fastify.mongo` accross your application.
+> **Note**: You still need to register `mongodb` prior to `crud` as seen in example below. This is due to encapsulation of fastify plugins assuming you will want to resuse same `fastify.mongo` accross your application.
 
 ## Example
 
@@ -42,7 +42,6 @@ export default fp((fastify, opts, next) => {
    */
   next()
 })
-
 ```
 
 Usage within a `services/accounts.js` file:
@@ -115,13 +114,14 @@ export default (fastify, opts, next) => {
 ### v2.0.0
 
 #### Changed
+
 - upgrade to fastify@5.x
 
 ### v1.0.0
 
 #### Changed
 
-- switch to __ESM only__
+- switch to **ESM only**
 - upgrade to fastify@4.x
 
 ### v0.3.0
