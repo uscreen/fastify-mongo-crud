@@ -1,118 +1,88 @@
 # AGENTS.md
 
-This document provides guidelines for AI coding agents working on the `@uscreen.de/fastify-mongo-crud` project.
+Guidelines for AI coding agents working on `@uscreen.de/fastify-mongo-crud`.
 
 ## Project Overview
 
-A tiny MongoDB decorator for Fastify providing CRUD-style database methods. This is an ESM-only package that requires Fastify >= 2.x and integrates with `@fastify/mongodb` and `@fastify/sensible`.
+A tiny MongoDB decorator for Fastify providing CRUD-style database methods. ESM-only package (`"type": "module"`) requiring Fastify >= 2.x, integrating with `@fastify/mongodb` and `@fastify/sensible`. Pure JavaScript — no TypeScript.
+
+## Package Manager
+
+**pnpm only.** The `preinstall` script enforces this via `only-allow`. Do not use npm or yarn.
 
 ## Build, Lint, and Test Commands
 
-### Package Manager
-This project uses **pnpm** exclusively. The `preinstall` script enforces this.
-
 ```bash
 pnpm install                    # Install dependencies
-```
-
-### Testing
-```bash
-pnpm test                       # Run all tests with spec reporter
-pnpm test:cov                   # Run tests with coverage (html + text)
-pnpm test:ci                    # Run tests with coverage for CI (lcov + text)
-make test                       # Alternative: run tests via Makefile
-make test.coverage              # Alternative: run tests with coverage
+pnpm test                       # Run all tests (node --test --test-reporter spec)
+pnpm test:cov                   # Tests with coverage (html + text via c8)
+pnpm test:ci                    # Tests with coverage for CI (lcov + text)
+pnpm lint                       # ESLint check only (no auto-fix)
+pnpm lint:fix                   # ESLint with auto-fix
 
 # Run a single test file
 node --test test/crud.test.js
 node --test test/noop.test.js
 
-# Run tests with specific reporter
+# Run a single test with readable output
 node --test --test-reporter spec test/crud.test.js
 ```
 
-**Test Requirements:**
-- Tests require MongoDB running locally on `127.0.0.1:27017` (default)
-- Set `mongoServer` environment variable to override: `mongoServer=localhost:27018 pnpm test`
+**Test requirements:**
+- MongoDB must be running locally on `127.0.0.1:27017`
+- Override with: `mongoServer=localhost:27018 pnpm test`
 - Tests use Node.js built-in test runner (`node:test`)
-- Each test creates a unique database using `ulid` to avoid conflicts
-- Test helper automatically cleans up test databases after completion
+- Each run creates a unique database via `ulid` and drops it on cleanup
 
-### Linting
-```bash
-pnpm lint                       # Run ESLint with auto-fix
-```
+## ESLint Configuration
 
-ESLint will automatically fix issues where possible. Pre-commit hooks run lint-staged on changed files.
+Uses `@antfu/eslint-config` (flat config, ESLint 9.x) with `eslint-plugin-format` for non-JS formatting. Configured in `eslint.config.js`.
 
-## Code Style Guidelines
-
-### ESLint Configuration
-The project extends `@uscreen.de/eslint-config-prettystandard-node` which combines:
-- **standard** (JavaScript Standard Style)
-- **prettier** (opinionated formatting)
-
-### Prettier Rules
+**Effective JS style rules:**
 - **No semicolons** (`semi: false`)
-- **Single quotes** for strings (`singleQuote: true`)
-- **No trailing commas** (`trailingComma: 'none'`)
-- **Bracket spacing** enabled (`bracketSpacing: true`)
-- **2-space indentation** (from .editorconfig)
+- **Single quotes** (`quotes: 'single'`)
+- **No trailing commas** (`style/comma-dangle: ['error', 'never']`)
+- **2-space indentation**
+- **Curly braces**: required for multi-line blocks, consistent within if/else (`curly: ['error', 'multi-line', 'consistent']`)
+- **Arrow functions allowed** at top level (`antfu/top-level-function: 'off'`)
+- **Console statements allowed** (`no-console: 'off'`)
+
+## Code Style
 
 ### Imports
-- Use **ESM imports** only (no CommonJS)
-- Import Node.js built-ins with `node:` prefix:
-  ```js
-  import { test } from 'node:test'
-  import assert from 'node:assert/strict'
-  ```
-- Group imports logically: Node built-ins → external packages → local modules
-- Use relative paths with `.js` extension for local imports:
-  ```js
-  import crud from '../index.js'
-  import { build } from './helper.js'
-  ```
+- **ESM only** — no `require()` or CommonJS
+- Node.js built-ins use `node:` prefix: `import { test } from 'node:test'`
+- Local imports use relative paths **with `.js` extension**: `import crud from '../index.js'`
+- Group: Node built-ins → external packages → local modules (blank line between groups)
 
 ### Naming Conventions
-- **camelCase** for variables, functions, and methods
-- **PascalCase** for classes (e.g., `ObjectId`, `Fastify`)
-- **lowercase** for file names with hyphens for multi-word names (e.g., `crud.test.js`)
-- Prefix unused test parameters with underscore: `(_t) => { ... }`
+- **camelCase** for variables, functions, methods
+- **PascalCase** for classes/constructors (`ObjectId`, `Fastify`)
+- **lowercase with hyphens** for filenames (`crud.test.js`)
+- Prefix unused parameters with underscore: `(_t) => { ... }`
 
-### Functions and Arrow Functions
-- Use traditional functions for plugin definitions:
+### Functions
+- Arrow functions for everything (top-level and callbacks):
   ```js
   const fastifyMongoCrud = (fastify, opts, next) => { ... }
-  ```
-- Use arrow functions for callbacks and short functions:
-  ```js
   const uuid = (prefix = '') => { ... }
   ```
-- No space before function parentheses (handled by prettier)
-
-### Async/Await
-- Prefer `async/await` over promises and callbacks
-- Always use `await` for database operations:
-  ```js
-  const result = await collection.findOne(query)
-  ```
+- Prefer `async/await` over raw promises or callbacks
+- Always `await` database operations
 
 ### Error Handling
-- Use `fastify.httpErrors` from `@fastify/sensible` for HTTP errors:
-  ```js
-  throw fastify.httpErrors.notFound()
-  ```
-- Check results before throwing errors:
+- Use `fastify.httpErrors` from `@fastify/sensible`:
   ```js
   if (result) return result
   throw fastify.httpErrors.notFound()
   ```
-- Use try-catch in tests to verify error handling:
+- In tests, verify errors with try-catch and a `thrown` flag:
   ```js
   let thrown = false
   try {
     await accounts.read(unknownId)
-  } catch (error) {
+  }
+  catch (error) {
     thrown = true
     assert.equal(error.name, 'NotFoundError')
     assert.equal(error.statusCode, Number(404))
@@ -120,34 +90,39 @@ The project extends `@uscreen.de/eslint-config-prettystandard-node` which combin
   assert.ok(thrown)
   ```
 
-### Object Construction
-- Use `Object.assign()` to add fields to objects:
-  ```js
-  Object.assign(data, { created: new Date() })
-  ```
-- Use object shorthand when possible
-- Prefer destructuring for extracting values
+### Object Patterns
+- `Object.assign()` to add fields in-place: `Object.assign(data, { created: new Date() })`
+- Use object shorthand and destructuring where natural
 
-### Types and JSDoc
-- No TypeScript in this project (pure JavaScript)
-- Use JSDoc comments for complex functions if needed
-- Keep comments minimal and focused on "why" not "what"
+### Comments
+- Keep comments minimal — focus on "why" not "what"
+- Use JSDoc only for complex public functions if needed
 
-### Testing Patterns
-- Use Node.js built-in test runner with nested tests:
-  ```js
-  await t.test('feature()', async (t) => {
-    await t.test('should do something', async (_t) => {
-      // test code
-    })
+## Testing Patterns
+
+Tests use `node:test` with `node:assert/strict`. Structure with nested `t.test()`:
+
+```js
+import assert from 'node:assert/strict'
+import { test } from 'node:test'
+import { build } from './helper.js'
+
+test('feature', async (t) => {
+  const fastify = await build(t)
+
+  await t.test('should do something', async (_t) => {
+    // assertions
   })
-  ```
-- Use `node:assert/strict` for assertions
-- Test helper provides `build(t)` function that returns configured Fastify instance
-- Always register cleanup with `t.after()` for database cleanup
+})
+```
 
-### Plugin Development
-- Wrap plugins with `fastify-plugin`:
+- `build(t)` from `test/helper.js` returns a configured Fastify instance with sensible, mongodb, and crud registered
+- Cleanup is automatic via `t.after()` in the helper (drops test DB, closes Fastify)
+- Use `await` before `t.test()` for sequential subtests (tests share state)
+
+## Plugin Development
+
+- Wrap with `fastify-plugin` to break encapsulation:
   ```js
   export default fp(fastifyMongoCrud, {
     fastify: '>=2.x',
@@ -156,48 +131,45 @@ The project extends `@uscreen.de/eslint-config-prettystandard-node` which combin
     dependencies: ['@fastify/sensible', '@fastify/mongodb']
   })
   ```
-- Use `fastify.decorate()` to add properties to Fastify instance
-- Call `next()` callback after synchronous plugin setup
+- Use `fastify.decorate()` to add properties to the Fastify instance
+- Synchronous plugins call `next()` when done
 
-## Git Workflow
+## CRUD Behavior Notes
 
-### Pre-commit Hooks
-- **husky** runs pre-commit hooks
-- **lint-staged** automatically lints changed JavaScript files
-- ESLint auto-fixes issues before commit
+- `create()` mutates the passed data object (adds `created` timestamp, `_id`)
+- `update()` uses `$set` + `$currentDate` for `modified`; upserts by default
+- `read()` / `findOne()` throw 404 (`NotFoundError`) when not found
+- `delete()` throws 404 when not found
+- `list()` returns empty array when nothing matches (no error)
 
-### CI/CD
-- Tests run on Node.js versions: 20, 22, 24
-- CI runs on push to `main` and `legacy` branches and PRs
-- Coverage reports uploaded to Coveralls
+## CI/CD
+
+- Tests run on Node.js 20, 22, 24 via GitHub Actions
+- CI runs on push to `main`/`legacy` and PRs to those branches
+- Coverage uploaded to Coveralls
 - Dependabot PRs auto-merge after tests pass
+- No pre-commit hooks (husky/lint-staged were removed)
 
 ## File Structure
 
 ```
-├── index.js              # Main plugin implementation
+├── index.js              # Main plugin (single file, ~77 lines)
+├── eslint.config.js      # ESLint flat config (@antfu/eslint-config)
 ├── test/
-│   ├── crud.test.js      # Main CRUD functionality tests
-│   ├── helper.js         # Test setup and utilities
-│   └── noop.test.js      # Basic test runner validation
+│   ├── crud.test.js      # Full CRUD test suite
+│   ├── helper.js         # Test setup: build(t) helper
+│   └── noop.test.js      # Sanity check for test runner
 ├── examples/
-│   └── plain-fastify/    # Example application
+│   └── plain-fastify/    # Example Fastify app with CRUD routes
 └── services/
-    └── .compose/         # MongoDB docker-compose setup
+    └── .compose/         # MongoDB docker-compose for local dev
 ```
 
 ## Common Pitfalls
 
-1. **Don't use CommonJS** - This is an ESM-only package
-2. **Don't forget .js extensions** - Required for ESM imports
-3. **Don't use semicolons** - Prettier removes them
-4. **Don't forget MongoDB** - Tests require MongoDB running locally
-5. **Don't use npm or yarn** - Only pnpm is allowed
-
-## Additional Notes
-
-- This package modifies data in-place (e.g., adding `created` timestamp to passed object)
-- CRUD operations automatically add timestamps: `created` on insert, `modified` on update
-- The `update()` method performs upsert by default (creates if not found)
-- The `read()` and `findOne()` methods throw 404 errors for not found
-- The `list()` method returns empty array (not error) when nothing found
+1. **No CommonJS** — `require()` will fail; use ESM imports only
+2. **Include `.js` extension** — required for all local ESM imports
+3. **No semicolons** — enforced by ESLint
+4. **No trailing commas** — enforced by `style/comma-dangle` rule
+5. **MongoDB required** — tests fail without a local MongoDB instance
+6. **pnpm only** — npm/yarn blocked by preinstall script
