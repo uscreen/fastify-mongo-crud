@@ -111,6 +111,10 @@ export default (fastify, opts, next) => {
 
 ## Changelog
 
+### v3.0.0
+
+- upgrade packages
+
 ### v2.0.0
 
 #### Changed
