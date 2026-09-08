@@ -540,10 +540,10 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.3.0.tgz#d06bbb384ebcf6c505fde1c3d0ed4ddffe0aaff8"
   integrity sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==
 
-"@uscreen.de/dev-service@^0.14.1":
-  version "0.14.2"
-  resolved "https://registry.yarnpkg.com/@uscreen.de/dev-service/-/dev-service-0.14.2.tgz#d42ba719cbcff74edcfbed47f6b152a0c813ca5d"
-  integrity sha512-kwVgF3eTb9xqFie9dYMz30vGbllnmZeoTYbqR59eOk99HX0iVBQYkSH3c1p3fBpPv60BIabzDt6lAD3ybInhCQ==
+"@uscreen.de/dev-service@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@uscreen.de/dev-service/-/dev-service-0.15.0.tgz#fd40a1fbc2f53705949910c5ecb99502b6861834"
+  integrity sha512-azSkecEquWrujOsx7VVBhMtSEqAKOQyqqzKqRkjba7DIJb2C2ILMxNyfqNEF+4WZxiHQHzQUGT3g+57mRiVa/A==
   dependencies:
     chalk "^6.0.0"
     commander "^15.0.0"
