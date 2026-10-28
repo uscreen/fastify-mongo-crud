@@ -145,7 +145,7 @@ test('feature', async (t) => {
 ## CI/CD
 
 - Tests run on Node.js 22, 24, 26 via GitHub Actions
-- CI runs on push to `main`/`legacy` and PRs to those branches
+- CI runs on push to `main` and PRs to `main`
 - Coverage uploaded to Coveralls
 - Dependabot PRs auto-merge after tests pass
 - No pre-commit hooks (husky/lint-staged were removed)
