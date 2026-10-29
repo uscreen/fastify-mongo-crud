@@ -9,7 +9,9 @@ const opts = {
 }
 
 // init
-const app = fastify({ logger: { level: 'debug' } })
+const app = fastify({
+  logger: { level: 'debug' }
+})
 
 // register modules and plugins 1st
 app.register(sensible)

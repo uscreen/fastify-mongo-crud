@@ -21,18 +21,27 @@ const fastifyMongoCrud = (fastify, opts, next) => {
       },
 
       async create(data) {
-        await collection.insertOne(Object.assign(data, { created: new Date() }))
+        await collection.insertOne(Object.assign(data, {
+          created: new Date()
+        }))
         return data
       },
 
       read(id) {
-        return this.findOne({ _id: new ObjectId(id) })
+        return this.findOne({
+          _id: new ObjectId(id)
+        })
       },
 
       async update(id, data) {
         const result = await collection.findOneAndUpdate(
-          { _id: new ObjectId(id) },
-          { $set: data, $currentDate: { modified: true } },
+          {
+            _id: new ObjectId(id)
+          },
+          {
+            $set: data,
+            $currentDate: { modified: true }
+          },
           { returnDocument: 'after', upsert: true }
         )
         return result

@@ -6,7 +6,10 @@ import { ulid } from 'ulid'
 import crud from '../index.js'
 
 const uuid = (prefix = '') => {
-  return [prefix, ulid().toLowerCase()].filter(e => e).join('-')
+  return [
+    prefix,
+    ulid().toLowerCase()
+  ].filter(e => e).join('-')
 }
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms))
 
