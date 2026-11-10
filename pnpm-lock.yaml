@@ -22,8 +22,8 @@ importers:
         specifier: ^6.0.7
         version: 6.0.7
       '@uscreen.de/dev-service':
-        specifier: ^0.15.0
-        version: 0.15.0
+        specifier: ^0.16.0
+        version: 0.16.0
       c8:
         specifier: ^12.0.0
         version: 12.0.0
@@ -574,8 +574,8 @@ packages:
     resolution: {integrity: sha512-SB8xqipSzZHUePCCLNeYxqnxq83X61/qzNhjQGbTfjxGZIeOEP7tBgWYX05Tcd6CgE02WdTJnh5b8kMZJ/+bnQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@uscreen.de/dev-service@0.15.0':
-    resolution: {integrity: sha512-azSkecEquWrujOsx7VVBhMtSEqAKOQyqqzKqRkjba7DIJb2C2ILMxNyfqNEF+4WZxiHQHzQUGT3g+57mRiVa/A==}
+  '@uscreen.de/dev-service@0.16.0':
+    resolution: {integrity: sha512-DqvYHQBZP0cDiinZ7NkIBdLQHRJ2ZtxUy7kVDyg9c5OM16G8IiCcT8hxLeFbgYPOFVvsl5q5wMZPgKtnzstDew==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -733,8 +733,8 @@ packages:
     resolution: {integrity: sha512-k7ndgKhwoQveBL+/1tqGJYNz097I7WOvwbmmU2AR5+magtbjPWQTS1C5vzGkBC8Ym8UWRzfKUzUUqFLypY4Q+w==}
     engines: {node: '>=20'}
 
-  commander@15.0.0:
-    resolution: {integrity: sha512-z67u4ZhzCL/Tydu1lJARtEZYWbWaN7oYLHbsuzocr6y4N6WZAagG3RQ4FW61V1/0+jImpj293XfrcYnd1qxtPg==}
+  commander@15.1.0:
+    resolution: {integrity: sha512-cgnQ88TRrWcC7pVq46RzJVRMktu3W2RcbnoidnfBsl1bmDCBwJS/udcIZpKoCrbAYYaCqsz1yZCVIgbIaU3ddQ==}
     engines: {node: '>=22.12.0'}
 
   commander@8.3.0:
@@ -2613,10 +2613,10 @@ snapshots:
       '@typescript-eslint/types': 8.72.1
       eslint-visitor-keys: 5.0.1
 
-  '@uscreen.de/dev-service@0.15.0':
+  '@uscreen.de/dev-service@0.16.0':
     dependencies:
       chalk: 6.0.1
-      commander: 15.0.0
+      commander: 15.1.0
       fs-extra: 11.4.1
       nanoid: 6.0.2
       parse-json: 8.3.0
@@ -2773,7 +2773,7 @@ snapshots:
       strip-ansi: 7.2.0
       wrap-ansi: 9.0.2
 
-  commander@15.0.0: {}
+  commander@15.1.0: {}
 
   commander@8.3.0: {}
 
